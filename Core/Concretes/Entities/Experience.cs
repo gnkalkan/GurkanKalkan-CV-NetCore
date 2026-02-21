@@ -1,0 +1,19 @@
+﻿using Core.Abstracts.Bases;
+using Core.Concretes.Enums;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Core.Concretes.Entities
+{
+    public class Experience : BaseEntity
+    {
+        public required string CompanyName { get; set; }
+        public required string Title { get; set; }
+        public string StartEndYear { get; set; } = null!;
+        public required string Description { get; set; }
+
+
+        public WorkStatus WorkType { get; set; }
+    }
+}
