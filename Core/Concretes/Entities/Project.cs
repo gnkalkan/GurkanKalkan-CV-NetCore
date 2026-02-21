@@ -1,7 +1,4 @@
 ﻿using Core.Abstracts.Bases;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Core.Concretes.Entities
 {
