@@ -10,26 +10,41 @@ namespace Data
         private IPersonalRepository? personalRepository;
         public IPersonalRepository PersonalRepository => personalRepository ??= new PersonalRepository(context);
 
-        public IContactRepository ContactRepository => throw new NotImplementedException();
+        private IContactRepository? contactRepository;
+        public IContactRepository ContactRepository => contactRepository ??= new ContactRepository(context);
 
-        public IEducationRepository EducationRepository => throw new NotImplementedException();
+        private IEducationRepository? educationRepository;
+        public IEducationRepository EducationRepository => educationRepository ??= new EducationRepository(context);
 
-        public IExperienceRepository ExperienceRepository => throw new NotImplementedException();
+        private IExperienceRepository? experienceRepository;
+        public IExperienceRepository ExperienceRepository => experienceRepository ??= new ExperienceRepository(context);
 
-        public IProjectRepository ProjectRepository => throw new NotImplementedException();
+        private IProjectRepository? projectRepository;
+        public IProjectRepository ProjectRepository => projectRepository ??= new ProjectRepository(context);
 
-        public IProjectSkillRepository ProjectSkillRepository => throw new NotImplementedException();
+        private IProjectSkillRepository? projectskillRepository;
+        public IProjectSkillRepository ProjectSkillRepository => projectskillRepository ??= new ProjectSkillRepository(context);
 
-        public ISkillRepository SkillRepository => throw new NotImplementedException();
+        private ISkillRepository? skillRepository;
+        public ISkillRepository SkillRepository => skillRepository ??= new SkillRepository(context);
 
-        public Task CommitAsync()
+        public async Task CommitAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                await context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                await DisposeAsync();
+                throw new Exception("An error occurred while saving changes to the database.", ex);
+            }
         }
 
-        public ValueTask DisposeAsync()
+        public async ValueTask DisposeAsync()
         {
-            throw new NotImplementedException();
+            await context.DisposeAsync();
+            GC.SuppressFinalize(this);
         }
     }
 }
