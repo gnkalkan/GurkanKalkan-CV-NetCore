@@ -7,6 +7,13 @@ namespace Core.Concretes.Entities
         public string Title { get; set; }
         //public byte Proficiency { get; set; }
 
-        public ICollection<Project> Projects { get; set; } = new List<Project>();
+        // One-to-Many (Bire Çok)
+        //public int ProjectId { get; set; }
+        //public virtual Project Project { get; set; }
+
+
+        //Navigation Properties
+        //Many-to-Many (Çoka Çok)
+        public virtual ICollection<Project> Projects { get; set; } = [];
     }
 }

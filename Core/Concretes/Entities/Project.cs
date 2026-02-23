@@ -9,6 +9,9 @@ namespace Core.Concretes.Entities
         public string? GithubUrl { get; set; }
         //public string ImageUrl { get; set; }
 
+        //Navigation Properties
+        //Many-to-Many (Çoka Çok)
+        public virtual ICollection<Skill> Skills { get; set; } = [];
 
     }
 }
