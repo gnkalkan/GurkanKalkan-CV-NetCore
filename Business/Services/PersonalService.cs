@@ -3,6 +3,7 @@ using Core.Abstracts;
 using Core.Abstracts.IServices;
 using Core.Concretes.DTOs;
 using Core.Concretes.Entities;
+using Microsoft.EntityFrameworkCore;
 using Utilities.Constants;
 using Utilities.Results;
 
@@ -49,7 +50,7 @@ namespace Business.Services
             try
             {
                 var personals = await unitOfWork.PersonalRepository.FindManyAsync();
-                var personalDTOs = mapper.Map<IEnumerable<PersonalListDTO>>(personals);
+                var personalDTOs = mapper.Map<IEnumerable<PersonalListDTO>>(personals.ToList());
                 return new SuccessDataResult<IEnumerable<PersonalListDTO>>(personalDTOs, "Personals" + Messages.RetrievedSuffix);
             }
             catch (Exception ex)

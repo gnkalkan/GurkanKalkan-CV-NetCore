@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/UI/">
+    <Project Path="GurkanKalkanPortfolio.Web/GurkanKalkanPortfolio.Web.csproj" Id="33538d84-453b-41b0-a1ae-9bd27f89bb1b" />
+  </Folder>
   <Project Path="Business/Business.csproj" Id="551cdcad-6816-4485-8894-680eb7951a49" />
   <Project Path="Core/Core.csproj" />
   <Project Path="Data/Data.csproj" />

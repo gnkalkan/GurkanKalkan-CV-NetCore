@@ -11,7 +11,9 @@ namespace Data.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<ProjectSkill>().HasKey(ps => new { ps.ProjectId, ps.SkillId });
+            modelBuilder.Entity<Project>().HasMany(p => p.Skills).WithMany(s => s.Projects).UsingEntity<ProjectSkill>();
         }
 
         public virtual DbSet<Contact> Contacts { get; set; }
