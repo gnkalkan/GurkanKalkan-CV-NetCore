@@ -1,4 +1,7 @@
-﻿using Core.Abstracts;
+﻿using Business.Profiles;
+using Business.Services;
+using Core.Abstracts;
+using Core.Abstracts.IServices;
 using Data;
 using Data.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Business
 {
-    // IOC (Inversion of Control)
+    // IOC (Inversion of Control) : Yapıcı methodlarla gelen yapıların new operatörlerini ortadan kaldırmak için kullanırız.
     public static class IOC 
     {
         public static IServiceCollection AddDataAccessDependencies(this IServiceCollection services, IConfiguration configuration)
@@ -15,6 +18,14 @@ namespace Business
             services.AddDbContext<CvDbContext>(options => options.UseSqlite(configuration.GetConnectionString("cvdb")));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddAutoMapper(config =>
+            {
+                config.AddMaps(typeof(PersonalProfiles).Assembly);
+            });
+
+            services.AddScoped<IPersonalService, PersonalService>();
+
             return services;
         }
     }
