@@ -11,7 +11,7 @@ namespace Business.Profiles
     {
         public PersonalProfiles()
         {
-            CreateMap<Personal, PersonalDTO>();
+            CreateMap<Personal, PersonalListDTO>();
             // .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FullName))
         }
     }

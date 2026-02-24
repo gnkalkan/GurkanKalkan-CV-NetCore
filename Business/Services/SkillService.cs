@@ -6,9 +6,9 @@ using Utilities.Results;
 
 namespace Business.Services
 {
-    public class ContactService(IUnitOfWork unitOfWork, IMapper mapper) : IContactService
+    public class SkillService(IUnitOfWork unitOfWork, IMapper mapper) : ISkillService
     {
-        public Task<IResult> AddAsync(AddContactDTO dto)
+        public Task<IResult> AddAsync(AddSkillDTO dto)
         {
             throw new NotImplementedException();
         }
@@ -18,17 +18,17 @@ namespace Business.Services
             throw new NotImplementedException();
         }
 
-        public Task<IDataResult<IEnumerable<ContactListDTO>>> GetAllAsync()
+        public Task<IDataResult<IEnumerable<SkillListDTO>>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<IDataResult<ContactListDTO>> GetByIdAsync(int id)
+        public Task<IDataResult<SkillListDTO>> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IResult> UpdateAsync(UpdateContactDTO dto)
+        public Task<IResult> UpdateAsync(UpdateSkillDTO dto)
         {
             throw new NotImplementedException();
         }

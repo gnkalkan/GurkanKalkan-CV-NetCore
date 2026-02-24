@@ -6,9 +6,9 @@ using Utilities.Results;
 
 namespace Business.Services
 {
-    public class ContactService(IUnitOfWork unitOfWork, IMapper mapper) : IContactService
+    public class ExperienceService(IUnitOfWork unitOfWork, IMapper mapper) : IExperienceService
     {
-        public Task<IResult> AddAsync(AddContactDTO dto)
+        public Task<IResult> AddAsync(AddExperienceDTO dto)
         {
             throw new NotImplementedException();
         }
@@ -18,17 +18,17 @@ namespace Business.Services
             throw new NotImplementedException();
         }
 
-        public Task<IDataResult<IEnumerable<ContactListDTO>>> GetAllAsync()
+        public Task<IDataResult<IEnumerable<ExperienceListDTO>>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<IDataResult<ContactListDTO>> GetByIdAsync(int id)
+        public Task<IDataResult<ExperienceListDTO>> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IResult> UpdateAsync(UpdateContactDTO dto)
+        public Task<IResult> UpdateAsync(UpdateExperienceDTO dto)
         {
             throw new NotImplementedException();
         }
