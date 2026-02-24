@@ -10,6 +10,7 @@ var app = builder.Build(); //Build metodu, yapýlandýrýlmýþ uygulama nesnesi oluþ
 
 // App Alaný: Uygulamanýn kendisini temsil eder. Bu alanda middleware (ara yazýlýmlar) ekleyebilir, yönlenmdirme iþlemlerini tanýmlayabilir ve uygulamanýn çalýþma zamanýndaki davranýþýný belirleyebiliriz. app.Run() komutuna kadar baþarýyla ulaþmaya çalýþýrýz. Ziyaretçiden gelen istek app.Run()'a ulaþmazsa hata döner.
 
+//Empty Project basit bir endpoint api gibi davranýr. Gelen isteði karþýlamak için routing tanýmlanýr. Fakat tam teþekküllü bir api projesi deðildir.
 app.MapGet("/", async (IPersonalService service) => await service.GetAllAsync());
 
 app.Run();
