@@ -4,7 +4,7 @@ namespace Core.Concretes.Entities
 {
     public class Skill:BaseEntity
     {
-        public string Title { get; set; }
+        public required string Title { get; set; } = null!;
         //public byte Proficiency { get; set; }
 
         // One-to-Many (Bire Çok)
