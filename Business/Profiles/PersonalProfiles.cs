@@ -13,6 +13,8 @@ namespace Business.Profiles
         {
             CreateMap<Personal, PersonalListDTO>();
             // .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FullName))
+            CreateMap<AddPersonalDTO, Personal>();
+            CreateMap<UpdatePersonalDTO, Personal>();
         }
     }
 }
