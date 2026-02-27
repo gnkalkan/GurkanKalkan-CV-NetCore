@@ -4,7 +4,10 @@
     ViewData["Title"] = "Gürkan N. Kalkan";
 }
 
-
+@{
+    string[] nameClasses = { "bg-primary","bg-secondary","bg-success","bg-danger","bg-info text-dark" };
+    int nameCounter = 0;
+}
 
 <section class="hero text-center mt-5" id="anasayfa">
     <div class="container">
@@ -24,9 +27,11 @@
             </div>
             <div class="col-md-6">
                 <h2 class="mb-4">Yeteneklerim</h2>
-                @foreach (var model in Model.Skills)
+                @foreach (var skill in Model.Skills)
                 {
-                    <span class="badge bg-primary fs-6 mb-2">c#</span>
+                    string currentNameClass = nameClasses[nameCounter % nameClasses.Length];
+                    <span class="badge @currentNameClass fs-6 mb-2">@skill.Title</span>
+                    nameCounter++;
                 }
                 
             </div>
