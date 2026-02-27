@@ -1,17 +1,27 @@
 using Core.Abstracts.IServices;
+using GurkanKalkanPortfolio.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace GurkanKalkanPortfolio.Web.Controllers
 {
-    public class HomeController(IPersonalService service) : Controller
+    public class HomeController(IPersonalService personalService, ISkillService skillService) : Controller
     {
         public async Task<IActionResult> Index()
         {
-            var model = await service.GetByIdAsync(1);
-            if (model.Success)
+            var personalModel = await personalService.GetByIdAsync(1);
+            var skillModel = await skillService.GetAllAsync();
+            if (personalModel.Success && skillModel.Success)
             {
-                return View(model.Data);
+
+                var viewModel = new HomeIndexViewModel
+                {
+                    Personal = personalModel.Data,
+                    Skills = skillModel.Data
+                };
+                return View(viewModel);
+                
+                //return View(model.Data);
                 // Eðer Bulunamadý Sayfan varsa bu kodu kullanabilirsin.
                 //if (model.Data == null || !model.Data.Any())
                 //    return View(model.Data);
@@ -19,10 +29,7 @@ namespace GurkanKalkanPortfolio.Web.Controllers
                 //    return NotFound();
                 
             }
-            else
-            {
-                return Problem(model.Message);
-            }
+                return Problem("Veriler yüklenirken hata oluþtu.");
                 
         }
     }
