@@ -7,14 +7,14 @@ using System.Text;
 
 namespace Business.Profiles
 {
-    public class PersonalProfiles:Profile
+    public class PersonalProfiles : Profile
     {
         public PersonalProfiles()
         {
             CreateMap<Personal, PersonalListDTO>();
-            // .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FullName))
             CreateMap<AddPersonalDTO, Personal>();
             CreateMap<UpdatePersonalDTO, Personal>();
+            // .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FullName))
         }
     }
 }

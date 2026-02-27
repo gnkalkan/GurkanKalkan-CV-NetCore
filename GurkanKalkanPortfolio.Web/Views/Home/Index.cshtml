@@ -1,4 +1,4 @@
-﻿@model Core.Concretes.DTOs.PersonalListDTO
+﻿@model GurkanKalkanPortfolio.Web.Models.HomeIndexViewModel
 
 @{
     ViewData["Title"] = "Gürkan N. Kalkan";
@@ -9,8 +9,8 @@
 <section class="hero text-center mt-5" id="anasayfa">
     <div class="container">
         <img width="250" height="319" src="~/img/Bennn.jpg" alt="Profil Fotoğrafı" class="rounded-5 mb-3 border border-3 border-light">
-        <h1>Merhaba, Ben @Model.FullName</h1>
-        <p class="lead">@Model.Title</p>
+        <h1>Merhaba, Ben @Model.Personal.FullName</h1>
+        <p class="lead">@Model.Personal.Title</p>
         <a href="#projeler" class="btn btn-primary btn-lg mt-3">Çalışmalarımı İncele</a>
     </div>
 </section>
@@ -20,12 +20,17 @@
         <div class="row">
             <div class="col-md-6">
                 <h2 class="mb-4">Hakkımda</h2>
-                <p>@Model.Description</p>
+                <p>@Model.Personal.Description</p>
             </div>
             <div class="col-md-6">
                 <h2 class="mb-4">Yeteneklerim</h2>
-                <span class="badge bg-primary fs-6 mb-2">C#</span>
+                @foreach (var model in Model.Skills)
+                {
+                    <span class="badge bg-primary fs-6 mb-2">c#</span>
+                }
+                
             </div>
         </div>
     </div>
 </section>
+
