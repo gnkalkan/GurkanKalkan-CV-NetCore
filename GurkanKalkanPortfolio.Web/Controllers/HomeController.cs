@@ -1,25 +1,29 @@
-using GurkanKalkanPortfolio.Web.Models;
+using Core.Abstracts.IServices;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+
 
 namespace GurkanKalkanPortfolio.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController(IPersonalService service) : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var model = await service.GetAllAsync();
+            if (model.Success)
+            {
+                return View(model.Data);
+                // Eðer Bulunamadý Sayfan varsa bu kodu kullanabilirsin.
+                //if (model.Data == null || !model.Data.Any())
+                //    return View(model.Data);
+                //else 
+                //    return NotFound();
+                
+            }
+            else
+            {
+                return Problem(model.Message);
+            }
+                
         }
     }
 }
