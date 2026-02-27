@@ -1,16 +1,29 @@
-using Business;
-using Core.Abstracts.IServices;
-
 var builder = WebApplication.CreateBuilder(args);
-//Builder Alaný: Hazýrladýðýmýz uygulamanýn baþlamadan önce yapýlandýrýlmasý için kullanýlýr. Bu alanda servisleri ekleyebilir, yapýlandýrma ayarlarýný yapabilir ve diðer baþlangýç iþlemlerini gerçekleþtirebiliriz. Kýsaca uygulama yapýlandýrýlýr.
 
-builder.Services.AddDataAccessDependencies(builder.Configuration); //IOC sýnýfýnda tanýmladýðýmýz AddDataAccessDependencies metodunu çaðýrarak, uygulamanýn ihtiyaç duyduðu servisleri ve baðýmlýlýklarý ekliyoruz. Bu, uygulamanýn çalýþmasý için gerekli olan bileþenlerin yapýlandýrýlmasýný saðlar. Bu bileþenler arasýnda veritabaný baðlamý, hizmetler ve diðer baðýmlýlýklar bulunur. Bu sayede uygulama, ihtiyaç duyduðu kaynaklara eriþebilir ve iþlevselliðini yerine getirebilir.
+// Add services to the container.
+builder.Services.AddControllersWithViews();
 
-var app = builder.Build(); //Build metodu, yapýlandýrýlmýþ uygulama nesnesi oluþturur. Bu nesne, uygulamanýn çalýþmasý için gerekli tüm bileþenleri içerir ve uygulamanýn baþlatýlmasýný saðlar.
+var app = builder.Build();
 
-// App Alaný: Uygulamanýn kendisini temsil eder. Bu alanda middleware (ara yazýlýmlar) ekleyebilir, yönlenmdirme iþlemlerini tanýmlayabilir ve uygulamanýn çalýþma zamanýndaki davranýþýný belirleyebiliriz. app.Run() komutuna kadar baþarýyla ulaþmaya çalýþýrýz. Ziyaretçiden gelen istek app.Run()'a ulaþmazsa hata döner.
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
 
-//Empty Project basit bir endpoint api gibi davranýr. Gelen isteði karþýlamak için routing tanýmlanýr. Fakat tam teþekküllü bir api projesi deðildir.
-app.MapGet("/", async (IPersonalService service) => await service.GetAllAsync());
+app.UseHttpsRedirection();
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapStaticAssets();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}")
+    .WithStaticAssets();
+
 
 app.Run();

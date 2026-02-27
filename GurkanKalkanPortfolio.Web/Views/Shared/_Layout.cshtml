@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+    <title>@ViewData["Title"]- CV-Portfolio</title>
+
+    <link href="~/lib/bootstrap-v5.3.8/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    @await RenderSectionAsync("Styles", false)
+
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav">
+    <partial name="_NavbarPartial" />
+
+    @RenderBody()
+
+    <partial name="_FooterPartial" />
+
+    
+
+    <script src="~/lib/bootstrap-v5.3.8/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/main.js"></script>
+    @await RenderSectionAsync("Scripts", false)
+</body>
+</html>
+
+
+
+
+
+
