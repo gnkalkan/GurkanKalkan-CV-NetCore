@@ -8,7 +8,7 @@ namespace GurkanKalkanPortfolio.Web.Controllers
     {
         public async Task<IActionResult> Index()
         {
-            var model = await service.GetAllAsync();
+            var model = await service.GetByIdAsync(1);
             if (model.Success)
             {
                 return View(model.Data);
