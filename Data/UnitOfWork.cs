@@ -30,7 +30,7 @@ namespace Data
             }
             catch (Exception ex)
             {
-                await DisposeAsync();
+                //await DisposeAsync();
                 throw new Exception("An error occurred while saving changes to the database.", ex);
             }
         }
