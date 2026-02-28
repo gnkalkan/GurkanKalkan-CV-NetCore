@@ -43,18 +43,18 @@ namespace GurkanKalkanPortfolio.Web.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> ContactAdd(AddContactDTO model)
+        public async Task<IActionResult> ContactAdd(AddContactDTO Contact)
         {
             if (ModelState.IsValid)
             { 
-                var result = await contactService.AddAsync(model);
+                var result = await contactService.AddAsync(Contact);
                 if (result.Success)
                 {
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError(string.Empty, result.Message);
             }
-            return View(model);
+            return RedirectToAction("Index", "Home");
         }
     }
 }
