@@ -33,9 +33,56 @@
                     <span class="badge @currentNameClass fs-6 mb-2">@skill.Title</span>
                     nameCounter++;
                 }
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding bg-light-gray" id="deneyimler">
+    <div class="container">
+        <h2 class="text-center mb-5">İş Tecrübeleri</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+
+                @foreach (var experience in Model.Experiences)
+                {
+                    <div class="card mb-4 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex flex-column flex-md-row justify-content-between mb-2">
+                                <h5 class="card-title fw-bold mb-1 mb-md-0">@experience.Title</h5>
+                                <span class="badge bg-primary align-self-start">@experience.StartEndYear</span>
+                            </div>
+                            <h6 class="text-muted">@experience.CompanyName</h6>
+                            <p class="card-text mt-3">@experience.Description</p>
+                        </div>
+                    </div>
+                }
                 
             </div>
         </div>
     </div>
 </section>
 
+<section class="section-padding bg-light-gray" id="projeler">
+    <div class="container">
+        <h2 class="text-center mb-5">Projelerim</h2>
+        <div class="row g-4 justify-content-center">
+            
+            @foreach (var githubRepo in Model.GithubRepositories)
+            {
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-1">
+                        <div class="card-body d-flex flex-column text-center">
+                            <h5 class="card-title fw-bold">@githubRepo.Name</h5>
+                            
+                            <div class="mt-auto pt-3">
+                                <a href="@githubRepo.HtmlUrl" target="_blank" rel="noopener noreferrer" class="btn btn-dark w-50 rounded-pill transition-hover"><i class="bi bi-github me-2"></i> Github</a>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+        </div>
+    </div>
+</section>

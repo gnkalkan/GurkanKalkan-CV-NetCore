@@ -31,6 +31,8 @@ namespace Business
             services.AddScoped<IProjectService, ProjectService>();
             services.AddScoped<IContactService, ContactService>();
 
+            services.AddScoped<IGithubService, GithubService>();
+
             return services;
         }
     }
