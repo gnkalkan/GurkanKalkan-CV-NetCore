@@ -14,7 +14,10 @@
         <img width="250" height="319" src="~/img/Bennn.jpg" alt="Profil Fotoğrafı" class="rounded-5 mb-3 border border-3 border-light">
         <h1>Merhaba, Ben @Model.Personal.FullName</h1>
         <p class="lead">@Model.Personal.Title</p>
-        <a href="#projeler" class="btn btn-primary btn-lg mt-3">Çalışmalarımı İncele</a>
+        <a href="#projeler" class="btn btn-outline-light fw-bold rounded-pill px-4 py-2 shadow-sm transition-hover">Çalışmalarımı İncele</a>
+        <a asp-controller="Home" asp-action="DownloadCv" class="btn btn-outline-light fw-bold rounded-pill px-4 py-2 shadow-sm transition-hover">
+            <i class="bi bi-cloud-arrow-down-fill me-2"></i> CV'mi İndir
+        </a>
     </div>
 </section>
 
