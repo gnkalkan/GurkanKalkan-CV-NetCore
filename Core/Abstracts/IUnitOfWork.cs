@@ -8,10 +8,7 @@ namespace Core.Abstracts
         IContactRepository ContactRepository { get; }
         IEducationRepository EducationRepository { get; }
         IExperienceRepository ExperienceRepository { get; }
-        IProjectRepository ProjectRepository { get; }
-        IProjectSkillRepository ProjectSkillRepository { get; }
         ISkillRepository SkillRepository { get; }
-
         Task CommitAsync();
     }
 }

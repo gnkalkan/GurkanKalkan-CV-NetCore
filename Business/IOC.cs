@@ -28,7 +28,6 @@ namespace Business
             services.AddScoped<ISkillService, SkillService>();
             services.AddScoped<IExperienceService, ExperienceService>();
             services.AddScoped<IEducationService, EducationService>();
-            services.AddScoped<IProjectService, ProjectService>();
             services.AddScoped<IContactService, ContactService>();
 
             services.AddScoped<IGithubService, GithubService>();

@@ -19,12 +19,6 @@ namespace Data
         private IExperienceRepository? experienceRepository;
         public IExperienceRepository ExperienceRepository => experienceRepository ??= new ExperienceRepository(context);
 
-        private IProjectRepository? projectRepository;
-        public IProjectRepository ProjectRepository => projectRepository ??= new ProjectRepository(context);
-
-        private IProjectSkillRepository? projectskillRepository;
-        public IProjectSkillRepository ProjectSkillRepository => projectskillRepository ??= new ProjectSkillRepository(context);
-
         private ISkillRepository? skillRepository;
         public ISkillRepository SkillRepository => skillRepository ??= new SkillRepository(context);
 
