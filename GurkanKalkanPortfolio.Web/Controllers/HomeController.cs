@@ -1,13 +1,13 @@
-using AutoMapper;
 using Core.Abstracts.IServices;
+using Core.Concretes.DTOs;
 using GurkanKalkanPortfolio.Web.Models;
 using Microsoft.AspNetCore.Mvc;
-using Octokit;
+using System.Threading.Tasks;
 
 
 namespace GurkanKalkanPortfolio.Web.Controllers
 {
-    public class HomeController(IPersonalService personalService, ISkillService skillService, IExperienceService experienceService, IGithubService githubService) : Controller
+    public class HomeController(IPersonalService personalService, ISkillService skillService, IExperienceService experienceService, IGithubService githubService, IContactService contactService) : Controller
     {
         public async Task<IActionResult> Index()
         {
@@ -40,6 +40,21 @@ namespace GurkanKalkanPortfolio.Web.Controllers
             }
 
             return PhysicalFile(filepath, "application/pdf", "GurkanKalkan_CV.pdf");
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> ContactAdd(AddContactDTO model)
+        {
+            if (ModelState.IsValid)
+            { 
+                var result = await contactService.AddAsync(model);
+                if (result.Success)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState.AddModelError(string.Empty, result.Message);
+            }
+            return View(model);
         }
     }
 }

@@ -8,7 +8,8 @@ namespace Business.Profiles
     {
         public ExperienceProfiles()
         {
-            CreateMap<Experience, ExperienceListDTO>();
+            CreateMap<Experience, ExperienceListDTO>()
+                .ForMember(dest => dest.WorkType, opt => opt.MapFrom(src => src.WorkType.ToString()));
             CreateMap<AddExperienceDTO, Experience>();
             CreateMap<UpdateExperienceDTO, Experience>();
         }

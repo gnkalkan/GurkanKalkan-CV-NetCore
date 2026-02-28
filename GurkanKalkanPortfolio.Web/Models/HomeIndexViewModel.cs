@@ -8,5 +8,6 @@ namespace GurkanKalkanPortfolio.Web.Models
         public IEnumerable<SkillListDTO> Skills { get; set; } = [];
         public IEnumerable<ExperienceListDTO> Experiences { get; set; } = [];
         public IEnumerable<GithubRepoListDTO> GithubRepositories { get; set; } = [];
+        public AddContactDTO Contact { get; set; } = null!;
     }
 }

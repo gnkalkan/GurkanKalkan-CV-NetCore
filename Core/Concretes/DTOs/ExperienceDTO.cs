@@ -10,6 +10,7 @@ namespace Core.Concretes.DTOs
         public string Title { get; set; } = null!;
         public string StartEndYear { get; set; } = null!;
         public string Description { get; set; } = null!;
+        public WorkStatus WorkType { get; set; }
     }
     public class AddExperienceDTO
     {

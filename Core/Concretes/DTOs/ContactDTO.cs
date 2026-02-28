@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Core.Concretes.DTOs
 {
@@ -14,11 +11,11 @@ namespace Core.Concretes.DTOs
     }
     public class AddContactDTO
     {
-        [Required]
+        [Display(Prompt = "FullName"), Required]
         public string NameSurname { get; set; } = null!;
-        [Required]
+        [EmailAddress, Required, Display(Name ="Email Address", Prompt = "Email Address")]
         public string Email { get; set; } = null!;
-        [Required]
+        [Display(Name = "Message", Prompt = "Message"), Required, DataType(DataType.MultilineText)]
         public string Message { get; set; } = null!;
     }
     public class UpdateContactDTO
