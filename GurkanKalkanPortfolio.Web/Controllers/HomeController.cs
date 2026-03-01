@@ -6,13 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GurkanKalkanPortfolio.Web.Controllers
 {
-    public class HomeController(IPersonalService personalService, ISkillService skillService, IExperienceService experienceService, IGithubService githubService, IContactService contactService) : Controller
+    public class HomeController(IPersonalService personalService, ISkillService skillService, IExperienceService experienceService, IEducationService educationService, IGithubService githubService, IContactService contactService) : Controller
     {
         public async Task<IActionResult> Index()
         {
             var personalModel = await personalService.GetByIdAsync(1);
             var skillModel = await skillService.GetAllAsync();
             var experienceModel = await experienceService.GetAllAsync();
+            var educationModel = await educationService.GetAllAsync();
             var githubModel = await githubService.GetRepositoriesAsync();
             
 
@@ -23,6 +24,7 @@ namespace GurkanKalkanPortfolio.Web.Controllers
                     Personal = personalModel.Data,
                     Skills = skillModel.Data,           
                     Experiences = experienceModel.Data,
+                    Educations = educationModel.Data,
                     GithubRepositories = githubModel.Data
                 };
                 return View(viewModel);

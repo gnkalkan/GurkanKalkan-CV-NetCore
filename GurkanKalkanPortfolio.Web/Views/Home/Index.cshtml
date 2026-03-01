@@ -80,6 +80,40 @@ else
     </div>
 }
 
+@if (Model.Educations != null && Model.Educations.Any())
+{
+    <section class="section-padding" id="egitimler">
+        <div class="container">
+            <h2 class="text-center mb-5">Eğitim ve Kurs Bilgileri</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    @foreach (var education in Model.Educations)
+                    {
+                        <div class="card mb-4 border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="d-flex flex-column flex-md-row justify-content-between mb-2">
+                                    <h5 class="card-title fw-bold mb-1 mb-md-0">@education.SchoolName</h5>
+                                    <span class="badge bg-primary align-self-start">@education.StartEndYear</span>
+                                </div>
+                                <h6 class="text-muted">@education.Department</h6>
+                                <p class="card-text mt-3">@education.Description</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    <div class="col-12 text-center text-muted">
+        <p>Henüz gösterilecek bir eğitim veya kurs bilgisi bulunmuyor.</p>
+    </div>
+}
+
+
+
 @if (Model.GithubRepositories != null && Model.GithubRepositories.Any())
 {
     <section class="section-padding bg-light-gray" id="projeler">
