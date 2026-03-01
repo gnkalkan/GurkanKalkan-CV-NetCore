@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Core.Concretes.DTOs
+﻿namespace Core.Concretes.DTOs
 {
     public class GithubRepoListDTO
     {
