@@ -55,7 +55,12 @@
                             <div class="card-body p-4">
                                 <div class="d-flex flex-column flex-md-row justify-content-between mb-2">
                                     <h5 class="card-title fw-bold mb-1 mb-md-0">@experience.Title</h5>
-                                    <span class="badge bg-primary align-self-start">@experience.StartEndYear</span>
+                                    
+                                    <div class="d-flex gap-2 align-self-start">
+                                        <span class="badge bg-secondary bg-opacity-75">@experience.WorkType</span>
+                                        <span class="badge bg-primary align-self-start">@experience.StartEndYear</span>
+                                    </div>
+                                    
                                 </div>
                                 <h6 class="text-muted">@experience.CompanyName</h6>
                                 <p class="card-text mt-3">@experience.Description</p>
@@ -136,3 +141,28 @@ else
         </div>
     </div>
 </section>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1055;">
+
+        <div id="liveToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <strong>Harika!</strong> @TempData["SuccessMessage"]
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var toastElement = document.getElementById('liveToast');
+            var toast = new bootstrap.Toast(toastElement, { delay: 5000 });
+            toast.show();
+        });
+    </script>
+}

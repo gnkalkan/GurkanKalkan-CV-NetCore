@@ -2,7 +2,6 @@ using Core.Abstracts.IServices;
 using Core.Concretes.DTOs;
 using GurkanKalkanPortfolio.Web.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 
 namespace GurkanKalkanPortfolio.Web.Controllers
@@ -50,6 +49,7 @@ namespace GurkanKalkanPortfolio.Web.Controllers
                 var result = await contactService.AddAsync(Contact);
                 if (result.Success)
                 {
+                    TempData["SuccessMessage"] = "Mesajýnýz baþarýyla gönderildi! En kýsa sürede dönüþ yapacaðým.";
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError(string.Empty, result.Message);
